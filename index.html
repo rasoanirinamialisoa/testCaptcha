@@ -10,7 +10,7 @@
         var container = document.querySelector("#my-captcha-container");
         
         AwsWafCaptcha.renderCaptcha(container, {
-            apiKey: window.WAF_API_KEY,
+            apiKey: window.API_KEY,
             onSuccess: captchaExampleSuccessFunction,
             onError: captchaExampleErrorFunction,
         });
