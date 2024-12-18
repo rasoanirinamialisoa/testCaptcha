@@ -1,0 +1,38 @@
+
+<head>
+    <script type="text/javascript" src="./config.js" defer></script>
+    <script type="text/javascript" src="https://b82b1763d1c3.eu-west-3.captcha-sdk.awswaf.com/b82b1763d1c3/jsapi.js" defer></script>
+</head>
+
+<script type="text/javascript">
+    function showMyCaptcha() {
+        var container = document.querySelector("#my-captcha-container");
+        
+        AwsWafCaptcha.renderCaptcha(container, {
+            apiKey: window.WAF_API_KEY,
+            onSuccess: captchaExampleSuccessFunction,
+            onError: captchaExampleErrorFunction,
+        });
+    }
+    
+    function captchaExampleSuccessFunction(wafToken) {
+        // Use WAF token to access protected resources
+        AwsWafIntegration.fetch("...WAF-protected URL...", {
+            method: "POST",
+        });
+    }
+    
+    function captchaExampleErrorFunction(error) {
+        /* Do something with the error */
+    }
+</script>
+
+<body>
+  <div id="my-captcha-container">
+    <!-- The contents of this container will be replaced by the captcha widget -->
+  </div>
+
+  <button onclick="showMyCaptcha()">
+    show my captcha
+  </button>
+</body>
