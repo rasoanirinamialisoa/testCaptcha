@@ -1,1 +1,1 @@
-window.WAF_API_KEY = process.env.WAF_API_KEY;
+window.WAF_API_KEY = "api_key"
