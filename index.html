@@ -9,30 +9,28 @@
     function showMyCaptcha() {
         var container = document.querySelector("#my-captcha-container");
         
+        // Log the API key to ensure it is accessible
+        console.log("Using WAF_API_KEY:", window.WAF_API_KEY);
+
         AwsWafCaptcha.renderCaptcha(container, {
             apiKey: window.WAF_API_KEY,
             onSuccess: captchaExampleSuccessFunction,
             onError: captchaExampleErrorFunction,
         });
     }
-    
+
     function captchaExampleSuccessFunction(wafToken) {
-        // Use WAF token to access protected resources
+        console.log("Captcha success, WAF Token:", wafToken);
         AwsWafIntegration.fetch("...WAF-protected URL...", {
             method: "POST",
         });
     }
-    
-/*************  ✨ Codeium Command ⭐  *************/
-    /**
-     * Handle errors from the captcha widget.
-     * @param {Error} error The error object returned by the widget.
-     */
-/******  06f4cc23-874e-41f4-8ccb-65e37493ce17  *******/
+
     function captchaExampleErrorFunction(error) {
-        /* Do something with the error */
+        console.error("Captcha error:", error);
     }
 </script>
+
 
 <body>
   <div id="my-captcha-container">
