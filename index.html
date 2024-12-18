@@ -1,3 +1,4 @@
+
 <head>
     <script type="text/javascript" src="./config.js" defer></script>
     <!--- ><script type="text/javascript" src="https://b82b1763d1c3.eu-west-3.captcha-sdk.awswaf.com/b82b1763d1c3/jsapi.js" defer></script> -->
@@ -7,30 +8,29 @@
 <script type="text/javascript">
     function showMyCaptcha() {
         var container = document.querySelector("#my-captcha-container");
-
-        // Log the API key to check its value
-        console.log("WAF_API_KEY:", window.WAF_API_KEY);
-
+        
         AwsWafCaptcha.renderCaptcha(container, {
             apiKey: window.WAF_API_KEY,
             onSuccess: captchaExampleSuccessFunction,
             onError: captchaExampleErrorFunction,
         });
     }
-
+    
     function captchaExampleSuccessFunction(wafToken) {
-        // Log the WAF token upon successful captcha validation
-        console.log("Captcha success, WAF Token:", wafToken);
-
         // Use WAF token to access protected resources
         AwsWafIntegration.fetch("...WAF-protected URL...", {
             method: "POST",
         });
     }
-
+    
+/*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * Handle errors from the captcha widget.
+     * @param {Error} error The error object returned by the widget.
+     */
+/******  06f4cc23-874e-41f4-8ccb-65e37493ce17  *******/
     function captchaExampleErrorFunction(error) {
-        // Log the error details if captcha rendering fails
-        console.error("Captcha error:", error);
+        /* Do something with the error */
     }
 </script>
 
@@ -40,6 +40,6 @@
   </div>
 
   <button onclick="showMyCaptcha()">
-    Show my captcha
+    show my captcha
   </button>
 </body>
